@@ -31,5 +31,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Before running the JSON Server, kindly ensure that it is installed on your system. If it's not installed, you can easily do so by running the following command:
 `npm install -g json-server`
 
+In the source code, you will get a file like db.json. First, keep it in a separate folder navigate to the folder open the terminal, and run this command `json-server db.json`
+
 ## Node Js version
 Please make sure that you have Node.js version 18.19.1 or higher installed on your system to successfully run this project.
