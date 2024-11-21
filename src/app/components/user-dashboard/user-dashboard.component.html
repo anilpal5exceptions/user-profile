@@ -1,0 +1,196 @@
+<div class="container mt-3">
+    
+    <div class="d-flex justify-content-end ">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            ADD USER
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="filter-wrapper">
+                <div class="btn filter-button" (click)="toggleFilter()"><i class="fa fa-filter"></i> Filter</div>
+            
+            <div class="search-div" *ngIf="isFilter">
+                <input type="text" class="form-control" placeholder="Search by Name or Email" 
+                [(ngModel)]="searchTerm" (input)="getAllUserList($event)" />
+            </div>
+        </div> 
+        </div>
+        <div class="col-lg-12">
+            <div class="main-box clearfix">
+                <div class="table-responsive">
+                    <table class="table user-list">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Technology</th>
+                                <th>Company</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="allUser.length == 0"><td colspan="5" class="text-center">No Record Found</td></tr>
+                            <tr *ngFor="let user of allUser; let i = index">
+                                <td [ngClass]="{'highlight-red': !user.companyName}" class="avatar-flex">
+                                    <img [src]="user.image ? user.image : 'https://png.pngtree.com/png-clipart/20200224/original/pngtree-cartoon-color-simple-male-avatar-png-image_5230557.jpg'" alt="">
+                                    <a class="user-link cursor-pointer"  (click)="userDeatils(user)">{{user.name}}</a>
+                                </td>
+                                <td [ngClass]="{'highlight-red': !user.companyName}">
+                                    {{user.technology}}
+                                </td>
+                                <td [ngClass]="{'highlight-red': !user.companyName}">
+                                    <span class="label label-default">{{user.companyName || 'N/A'}}</span>
+                                </td>
+                                <td [ngClass]="{'highlight-red': !user.companyName}">
+                                    <a>{{user.email}}</a>
+                                </td>
+                                <td [ngClass]="{'highlight-red': !user.companyName}">
+                                    <a class="table-link cursor-pointer" (click)="onEdit(user)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-square fa-stack-2x"></i>
+                                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                    <a class="table-link danger cursor-pointer" (click)="onDelete(user.id, $event)">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-square fa-stack-2x"></i>
+                                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                        <a class="page-link" href="#" (click)="onPageChange(currentPage - 1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li *ngFor="let page of [].constructor(totalPages); let i = index" class="page-item" [class.active]="i + 1 === currentPage">
+                        <a class="page-link" href="#" (click)="onPageChange(i + 1)">{{ i + 1 }}</a>
+                    </li>
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                        <a class="page-link" href="#" (click)="onPageChange(currentPage + 1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header p-3">
+          <h5 class="modal-title" id="exampleModalLabel">{{ editMode ? 'Edit User' : 'Add User' }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="userForm" class="row g-3 needs-validation p-3" novalidate (ngSubmit)="onSubmit()">
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="Name" class="form-label">Name <span>*</span></label>
+                        <input type="text" class="form-control" id="name" formControlName="name" required>
+                   
+                        <div *ngIf="userForm.get('name')?.touched || userForm.get('name')?.dirty" class="invalid-feedback">
+                            Name is required.
+                          </div>
+                    </div> 
+                </div>
+              
+                <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="Technology" class="form-label">Technology <span>*</span> </label>
+                  <input type="text" class="form-control" id="technology" formControlName="technology" required>
+                  <div *ngIf="userForm.get('technology')?.touched && userForm.get('technology')?.invalid" class="invalid-feedback">
+                    Technology is required.
+                  </div>
+                </div>
+            </div>
+              
+                <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="CompanyName" class="form-label">Company Name <span>*</span></label>
+                  <input type="text" class="form-control" id="companyName" formControlName="companyName" required>
+                  <div *ngIf="userForm.get('companyName')?.touched && userForm.get('companyName')?.invalid" class="invalid-feedback">
+                    Company Name is required.
+                  </div>
+                </div>
+            </div>
+
+              
+            <div class="col-md-12">
+                <div class="mb-3"> 
+                  <label for="Email" class="form-label">Email <span>*</span></label>
+                  <input type="text" class="form-control" id="email" formControlName="email" required>
+                  <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid" class="invalid-feedback">
+                    <div *ngIf="userForm.get('email')?.hasError('required')">Email is required.</div>
+                    <div *ngIf="userForm.get('email')?.hasError('email')">Please enter a valid email address.</div>
+                  </div>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                <div class="mb-3"> 
+                  <label for="address" class="form-label">Address <span>*</span></label>
+                  <input type="text" class="form-control" id="address" formControlName="address" required>
+                  <div *ngIf="userForm.get('address')?.touched && userForm.get('address')?.invalid" class="invalid-feedback">
+                    <div *ngIf="userForm.get('address')?.hasError('required')">Address is required.</div>
+                    <div *ngIf="userForm.get('address')?.hasError('address')">Please enter a valid address.</div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="mb-3"> 
+                  <label for="pin" class="form-label">Pin <span>*</span></label>
+                  <input type="text" class="form-control" id="pin" formControlName="pin" required>
+                  <div *ngIf="userForm.get('pin')?.touched && userForm.get('pin')?.invalid" class="invalid-feedback">
+                    <div *ngIf="userForm.get('pin')?.hasError('required')">Pin is required.</div>
+                    <div *ngIf="userForm.get('pin')?.hasError('pin')">Please enter pin.</div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="mb-3"> 
+                  <label for="phone" class="form-label">Phone <span>*</span></label>
+                  <input type="text" class="form-control" id="phone" formControlName="phone" required>
+                  <div *ngIf="userForm.get('phone')?.touched && userForm.get('phone')?.invalid" class="invalid-feedback">
+                    <div *ngIf="userForm.get('phone')?.hasError('required')">Phone is required.</div>
+                    <div *ngIf="userForm.get('phone')?.hasError('phone')">Please enter phone.</div>
+                  </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="mb-3"> 
+                  <label for="designation" class="form-label">Designation <span>*</span></label>
+                  <input type="text" class="form-control" id="designation" formControlName="designation" required>
+                  <div *ngIf="userForm.get('designation')?.touched && userForm.get('designation')?.invalid" class="invalid-feedback">
+                    <div *ngIf="userForm.get('designation')?.hasError('required')">Designation is required.</div>
+                    <div *ngIf="userForm.get('designation')?.hasError('designation')">Please enter designation.</div>
+                  </div>
+                </div>
+            </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid" data-bs-dismiss="modal">
+                {{ editMode ? 'Update' : 'Submit' }}
+              </button>
+            </div>
+        </form>
+
+      </div>
+    </div>
+</div>

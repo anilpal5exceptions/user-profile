@@ -1,0 +1,163 @@
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-12">
+                <div class="goback" (click)="goBack()">
+                    <span><i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex align-items-center">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="https://png.pngtree.com/png-clipart/20200224/original/pngtree-cartoon-color-simple-male-avatar-png-image_5230557.jpg" alt="">
+                    <div class="file btn btn-lg btn-primary">
+                        {{userData.name}} Photo
+                        <input type="file" name="file"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                            <h5>
+                                {{userData.name}}
+                            </h5>
+                            <h6>
+                                Web Developer and Designer
+                            </h6> 
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                        </li> 
+                    </ul>
+                </div>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>WORK LINK</p>
+                    <a href="">N/A</a> 
+                    <p>SKILLS</p>
+                    <a href="">N/A</a>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                               
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="name">Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{userData.name}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="email">Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{userData.email}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="phone">Phone</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{userData.phone}} </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="profession">Profession</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{userData.technology}} Developer</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="address">Address</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{userData.address}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="pin">Pin</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{userData.pin}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="designation">Designation</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{userData.designation}}</p>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="Experience">Experience</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Expert</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="rate">Hourly Rate</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>10$/hr</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="projects">Total Projects</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>230</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="level">English Level</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Expert</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="Availability">Availability</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>6 months</p>
+                                    </div>
+                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="bio">Your Bio</label><br/>
+                                <p>Your detail description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>           
+</div>
