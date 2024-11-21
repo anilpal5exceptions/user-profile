@@ -1,0 +1,70 @@
+{
+    "data": [
+      {
+        "name": "Mike Tison",
+        "technology": "NODE.js",
+        "companyName": "BCG",
+        "email": "mailto:mike1@gmail.com",
+        "address": "123",
+        "pin": "123",
+        "phone": "123",
+        "designation": "123",
+        "id": "9e93"
+      },
+      {
+        "name": "Badal Prajapat",
+        "technology": "MEAN",
+        "companyName": "5Exceptions",
+        "email": "mailto:badal@gmail.com",
+        "id": "1ffa",
+        "address": "53 Dheeraj Nagar",
+        "pin": "123456",
+        "phone": "9876543219",
+        "designation": "software Developer"
+      },
+      {
+        "name": "Anil pal",
+        "technology": "MEAN",
+        "companyName": "5Exceptions",
+        "email": "mailto:badal@gmail.com",
+        "id": "1fbc",
+        "address": "53 Dheeraj Nagar",
+        "pin": "123456",
+        "phone": "9876543219",
+        "designation": "software Developer"
+      },
+      {
+        "id": "451c",
+        "name": "Piyush Goyal",
+        "technology": "Power BI",
+        "companyName": "DXC",
+        "email": "mailto:piyush@gmail.com",
+        "address": "53 Dheeraj Nagar",
+        "pin": "123456",
+        "phone": "9876543219",
+        "designation": "software Developer"
+      },
+      {
+        "id": "118a",
+        "name": "Manish Patidar",
+        "technology": "JAVA",
+        "companyName": "5Exceptions",
+        "email": "mailto:manish@gmail.com",
+        "address": "53 Dheeraj Nagar",
+        "pin": "123456",
+        "phone": "9876543219",
+        "designation": "software Developer"
+      },
+      {
+        "id": "b8da",
+        "name": "Basant Yadav",
+        "technology": "MEAN",
+        "companyName": "Infosys",
+        "email": "mailto:basant@gmail.com",
+        "address": "53 Dheeraj Nagar",
+        "pin": "564323",
+        "phone": "9876543219",
+        "designation": "software Developer"
+      }
+    ]
+  }
